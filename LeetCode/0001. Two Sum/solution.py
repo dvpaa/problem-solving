@@ -1,7 +1,7 @@
-from itertools import combinations
-
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for x, y in combinations(list(range(len(nums))), 2):
-            if nums[x] + nums[y] == target:
-                return [x, y]
+        num_map = {}
+        for i, num in enumerate(nums):
+            if target - num in num_map:
+                return [num_map[target-num], i]
+            num_map[num] = i
