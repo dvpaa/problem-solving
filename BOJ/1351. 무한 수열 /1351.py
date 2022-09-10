@@ -1,7 +1,5 @@
 # 무한 수열
 
-import math
-
 N, P, Q = map(int, input().split())
 A = dict()
 A[0] = 1
