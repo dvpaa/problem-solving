@@ -2,19 +2,20 @@
 
 import sys
 from collections import deque
+input = sys.stdin.readline
 
-for _ in range(int(sys.stdin.readline().rstrip())):
-    N, K = map(int, sys.stdin.readline().rstrip().split())
-    times = [0] + list(map(int, sys.stdin.readline().rstrip().split()))
+for _ in range(int(input())):
+    N, K = map(int, input().split())
+    times = [0] + list(map(int, input().split()))
     graph = [[] for __ in range(N + 1)]
     in_degree = [-1] + [0] * N
     dp = [0] * (N+1)
 
     for ___ in range(K):
-        X, Y = map(int, sys.stdin.readline().rstrip().split())
+        X, Y = map(int, input().split())
         graph[X].append(Y)
         in_degree[Y] += 1
-    W = int(sys.stdin.readline().rstrip())
+    W = int(input())
 
     q = deque()
     for idx, val in enumerate(in_degree):
