@@ -14,12 +14,10 @@ def convert_string(operator: str, val: int) -> int:
         return 9999 if val == 0 else val-1
 
     elif operator == "L":
-        str_num = "0" * (4 - len(str(val))) + str(val)
-        return int(str_num[1] + str_num[2] + str_num[3] + str_num[0])
+        return 10*(val % 1000) + val // 1000
 
     elif operator == "R":
-        str_num = "0" * (4 - len(str(val))) + str(val)
-        return int(str_num[3] + str_num[0] + str_num[1] + str_num[2])
+        return (val // 10) + 1000 * (val % 10)
 
 
 def bfs(init_val: int) -> None:
