@@ -5,18 +5,11 @@ import sys
 input = sys.stdin.readline
 
 
-def dfs(i):
-    global n
-    if i > n:
-        return
-
-    dp[i] += 1
-    for j in range(1, 4):
-        dfs(i + j)
-
-
 for _ in range(int(input())):
     n = int(input())
-    dp = [0] * (n + 1)
-    dfs(0)
+    dp = [-1, 1, 2, 4]
+
+    for i in range(4, n+1):
+        dp.append(dp[i - 1] + dp[i - 2] + dp[i - 3])
+
     print(dp[n])
