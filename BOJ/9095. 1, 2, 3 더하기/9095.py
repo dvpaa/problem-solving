@@ -4,11 +4,10 @@ import sys
 
 input = sys.stdin.readline
 
-dp = [0] * 12
-
 
 def dfs(i):
-    if i > 11:
+    global n
+    if i > n:
         return
 
     dp[i] += 1
@@ -16,9 +15,8 @@ def dfs(i):
         dfs(i + j)
 
 
-dfs(0)
-
 for _ in range(int(input())):
     n = int(input())
+    dp = [0] * (n + 1)
+    dfs(0)
     print(dp[n])
-
