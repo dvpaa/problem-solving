@@ -1,17 +1,23 @@
-def solution(priorities, location):
-    arr = [(idx, val) for idx, val in enumerate(priorities)]
-    cnt = 1
-    while arr:
-        idx, val = arr.pop(0)
-        flag = True
-        for tup in arr:
-            if val < tup[1]:
-                arr.append((idx, val))
-                flag = False
-                break
+from collections import deque
 
-        if flag:
+def solution(priorities, location):
+    q = deque([(idx, priority) for idx, priority in enumerate(priorities)])
+    cnt = 0
+    
+    while q:
+        idx, priority = q.popleft()
+        if is_vaild(q, priority):
+            cnt += 1
             if idx == location:
-                return cnt
-            else:
-                cnt += 1
+                break
+        else:
+            q.append((idx, priority))
+            
+    return cnt
+
+        
+def is_vaild(q, target):
+    for idx, val in q:
+        if val > target:
+            return False
+    return True
