@@ -5,10 +5,6 @@ fast_input = sys.stdin.readline
 left_stack = list(fast_input().rstrip())
 right_stack = []
 
-for s in str:
-    left_stack.append(s)
-
-
 for _ in range(int(fast_input())):
     operator = fast_input().rstrip().split()
     if operator[0] == "L" and left_stack:
